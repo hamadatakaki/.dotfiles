@@ -58,7 +58,7 @@ python_venv_str() {
 # PROMPT系環境変数の設定
 PROMPT=$'%(?.%F{032}<OK>%f.%F{001}<BAD>%f) %F{013}%m on %C%f %F{015}@%*%f ${vcs_info_msg_0_}
 %F{032}>>%f '
-RPROMPT=$'%d `python_venv_str`'
+RPROMPT=$'%F{012}%d%f `python_venv_str`'
 
 # RPROMPTの削除・復帰用のコマンドを定義
 alias delrprompt="RPROMPT=''"
