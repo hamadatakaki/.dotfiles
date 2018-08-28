@@ -51,15 +51,14 @@ python_venv_str() {
   if [ "`basename \"$VIRTUAL_ENV\"`" = "" ]; then ;
     echo ""
   else 
-    echo "venv: `basename \"$VIRTUAL_ENV\"`"
+    echo "@ venv: `basename \"$VIRTUAL_ENV\"`"
   fi
 }
 
 # PROMPT系環境変数の設定
-PROMPT=$'%(?.%F{032}\U1F363 <OK>%f.%F{088}\U1F607 <BAD>%f)%F{176} %m on %C%f ${vcs_info_msg_0_} %F{255}`python_venv_str`%f
-%F{039}>>%f '
-RPROMPT=$'%F{074}%d%f %F{220}@ %*%f'
-SPROMPT="%{$suggest%}%F{039}ﾓｼｶｼﾃ %F{}%B%r%b%F{039} ﾃﾞｽｶ? [%f%F{126}そう(y)%f %F{039}or%f %F{027}違う(n)%f%F{039}] >>%f "
+PROMPT=$'%(?.%F{032}<OK>%f.%F{001}<BAD>%f) %F{013}%m on %C%f %F{015}@%*%f ${vcs_info_msg_0_}
+%F{032}>>%f '
+RPROMPT=$'%d `python_venv_str`'
 
 # RPROMPTの削除・復帰用のコマンドを定義
 alias delrprompt="RPROMPT=''"
