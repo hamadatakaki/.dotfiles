@@ -98,3 +98,4 @@ alias code="code ."
 
 # nocorrect系の設定
 alias yarn="nocorrect yarn"
+alias bat="nocorrect bat"
