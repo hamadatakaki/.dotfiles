@@ -11,3 +11,7 @@ eval "$(sbtenv init -)"
 
 export PATH="${HOME}/.scalaenv/bin:${PATH}"
 eval "$(scalaenv init -)"
+
+# goenvの設定
+export PATH="${HOME}/.goenv/bin:${PATH}"
+eval "$(goenv init -)"
