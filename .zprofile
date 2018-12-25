@@ -1,17 +1,13 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# cargoにPATHを通す
+# anyenv path
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+export PATH="$HOME/.anyenv/envs/pyenv/shims:$PATH"
+
+# cargo path
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# rbenvの設定
-eval "$(rbenv init -)"
+# pipenvの設定
+export PIPENV_VENV_IN_PROJECT=1
 
-export PATH="${HOME}/.sbtenv/bin:${PATH}"
-eval "$(sbtenv init -)"
-
-export PATH="${HOME}/.scalaenv/bin:${PATH}"
-eval "$(scalaenv init -)"
-
-# goenvの設定
-export PATH="${HOME}/.goenv/bin:${PATH}"
-eval "$(goenv init -)"

@@ -51,14 +51,14 @@ python_venv_str() {
   if [ "`basename \"$VIRTUAL_ENV\"`" = "" ]; then ;
     echo ""
   else 
-    echo "@ venv: `basename \"$VIRTUAL_ENV\"`"
+    echo "[`basename \"$VIRTUAL_ENV\"`]"
   fi
 }
 
 # PROMPT系環境変数の設定
-PROMPT=$'%(?.%F{032}<OK>%f.%F{001}<BAD>%f) %F{013}%m on %C%f %F{015}@%*%f ${vcs_info_msg_0_}
+PROMPT=$'%(?.%F{032}<OK>%f.%F{001}<BAD>%f) %F{013}%m on %C%f %F{015}@%*%f ${vcs_info_msg_0_} `python_venv_str`
 %F{032}>>%f '
-RPROMPT=$'%F{012}%d%f `python_venv_str`'
+RPROMPT=$'%F{012}%d%f'
 
 # RPROMPTの削除・復帰用のコマンドを定義
 alias delrprompt="RPROMPT=''"
@@ -87,9 +87,6 @@ source ~/.zprofile
 
 
 # Python周りの設定
-alias python="python3"
-alias pip="pip3"
-alias ipython="nocorrect ipython"
 
 
 # VisualStudioCode周りの設定
@@ -100,3 +97,10 @@ alias code="code ."
 alias yarn="nocorrect yarn"
 alias bat="nocorrect bat"
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+#[[ -f /Users/hamada/develop/sls/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/hamada/develop/sls/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+#[[ -f /Users/hamada/develop/sls/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/hamada/develop/sls/node_modules/tabtab/.completions/sls.zsh
