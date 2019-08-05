@@ -11,3 +11,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # pipenvの設定
 export PIPENV_VENV_IN_PROJECT=1
 
+# mysql@5.7
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+

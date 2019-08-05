@@ -4,6 +4,7 @@ alias ls="ls -G"
 alias lsd="ls -d .*"
 alias lsnd="ls -nd .*"
 alias echo256colors='for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo'
+alias cpcp="pwd| pbcopy"
 
 # 環境変数
 export LSCOLORS="CxDxbxdxexegedabagacad"
@@ -39,9 +40,9 @@ if [ -e /usr/local/share/zsh-completions ]; then fpath=(/usr/local/share/zsh-com
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{221}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{196}+"
-zstyle ':vcs_info:*' formats "%F{027}%c%u[%b]%f"
+zstyle ':vcs_info:git:*' stagedstr "%F{011}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{001}+"
+zstyle ':vcs_info:*' formats "%F{012}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 
@@ -56,13 +57,13 @@ python_venv_str() {
 }
 
 # PROMPT系環境変数の設定
-PROMPT=$'%(?.%F{032}<OK>%f.%F{001}<BAD>%f) %F{013}%m on %C%f %F{015}@%*%f ${vcs_info_msg_0_} `python_venv_str`
-%F{032}>>%f '
+PROMPT=$'%(?.%F{012}<OK>%f.%F{001}<BAD>%f) %F{255}%m on %C%f %F{011}@%*%f ${vcs_info_msg_0_} `python_venv_str`
+%F{012}>>%f '
 RPROMPT=$'%F{012}%d%f'
 
 # RPROMPTの削除・復帰用のコマンドを定義
 alias delrprompt="RPROMPT=''"
-alias rebuildrprompt="RPROMPT=$'%F{074}%d%f %F{220}@ %*%f'"
+alias rebuildrprompt="RPROMPT=$'%F{012}%d%f'"
 
 
 # bindkeyの設定
@@ -96,11 +97,9 @@ alias code="code ."
 # nocorrect系の設定
 alias yarn="nocorrect yarn"
 alias bat="nocorrect bat"
+alias circleci="nocorrect circleci"
+export AC_ROOT=/Users/hamada/develop/atcoder
 
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-#[[ -f /Users/hamada/develop/sls/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/hamada/develop/sls/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-#[[ -f /Users/hamada/develop/sls/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/hamada/develop/sls/node_modules/tabtab/.completions/sls.zsh
+# opam configuration
+test -r /Users/hamada/.opam/opam-init/init.zsh && . /Users/hamada/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+export PATH="/usr/local/opt/llvm/bin:$PATH"
